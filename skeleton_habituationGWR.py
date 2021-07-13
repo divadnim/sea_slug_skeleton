@@ -3,8 +3,13 @@
 # of the Aplysia gill withdrawal reflex
 #
 # Modified for BU's RISE Practicum Comp Neuro lab by mbezaire@bu.edu
+"""
+# sea_slug_skeleton
+ Skeleton program file in which to create a simulation of the sea slug gill reflex.
 
+"""
 ###############################
+
 # import libraries with special
 # functions needed in this script
 ###############################
@@ -16,13 +21,13 @@ import matplotlib.pyplot as plt
 ###############################
 # TODO: Set a variable called stv to 4, this will define 
 #        the weight of the connection from input to output
-# stv = 
+stv = 4
 
 # TODO: set up an input pulse called pls
-# pls = 
+pls = [0, 0, 1, 0, 0]
 
 # TODO: then create a list of 6 pulses, called x, to use for input
-# x = 
+x =  pls*6
 
 v = stv # Set connection weight to start weight value
 
@@ -37,7 +42,10 @@ y = np.zeros((1,nTs)) # set up (define) a vector for the output time series
 #        through each time step in 
 #        the input series and calculate
 #        the output at each time step. Ex:
-# for ...
+for t in range(nTs):
+    y[0, t] = x[t] * v
+    if x[t] > 0:
+        v *= .75
 #     then indent 4 spaces and write the equation that
 #     describes how each input value in the vector x is 
 #     transformed to the output value in the vector y
@@ -70,4 +78,4 @@ def showresults(x,y,nTs,stv):
 # - Comment out the call to showresults below
 # - Comment out any print statements added during code development
 # - Make sure you keep x, y, pls, and other variable names the same
-showresults(x,y,nTs,stv)
+#showresults(x,y,nTs,stv)
